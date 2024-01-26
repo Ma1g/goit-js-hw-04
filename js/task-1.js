@@ -1,10 +1,28 @@
-function addOverNum() {
-  
+function isEnoughCapacity(products, containerSize) {
+
+    let totalProducts = 0;
+
+    for (const ProductsQuantity of Object.values(products)) {
+        totalProducts += ProductsQuantity;
+    }
+
+    return totalProducts <= containerSize;
 }
 
 
 
-console.log(addOverNum(50, 15, 27)); // 0
-console.log(addOverNum(10, 12, 4, 11, 48, 10, 8)); // 71
-console.log(addOverNum(15, 32, 6, 13, 19, 8)); // 51
-console.log(addOverNum(20, 74, 11, 62, 46, 12, 36)); // 218
+console.log(
+  isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8)
+); // true
+
+console.log(
+  isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12)
+); // false
+
+console.log(
+  isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14)
+); // true
+
+console.log(
+  isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7)
+); // false
